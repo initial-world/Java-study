@@ -71,8 +71,21 @@ public class StringLearning {
         System.out.println("Example2.x="+x);
     }
 
+    public int tttt(){
+        try {
+            Thread.activeCount();
+        }catch (Exception e){
+            return 0;
+        }finally {
+            //return 2;
+        }
+        return 1;
+    }
 
-
+    @Test
+    public void a(){
+        System.out.println(tttt());
+    }
 
 
 }
