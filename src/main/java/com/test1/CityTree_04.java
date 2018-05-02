@@ -1,5 +1,8 @@
 package com.test1;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  * CreatedBy cx
  * CreateTime 2018/4/19 21:29
@@ -23,4 +26,58 @@ package com.test1;
  3
  */
 public class CityTree_04 {
+    public static void getStep(City city){
+        for(int i = 0;i < city.list.size();i++){
+            city.list.get(i).step = city.step +1; //子节点的步数等于当前父节点的步数加1
+            getStep(city.list.get(i));  //有子节点的话继续回调
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int n = scan.nextInt(); //城市数
+        int L = scan.nextInt(); //行走次数
+        City[] citys = new City[n];
+        for(int i = 1;i<n;i++){ //从1开始
+            int temp = scan.nextInt(); //i与parent[i-1]有一条道路连接
+            if(citys[i] == null){
+                citys[i] = new City();
+            }
+            if(citys[temp] == null){
+                citys[temp] = new City();
+            }
+            //citys[i].pre = citys[temp];
+            citys[temp].list.add(citys[i]);
+        }
+        //计算每一个城市节点的步数,因为一开始在城市0，所以从citys[0]开始
+        getStep(citys[0]);
+        int maxLen = 0; //城市树的最长步数
+        for(int j = 1;j <n; j++){
+            if(citys[j].step > maxLen){
+                maxLen = citys[j].step;
+            }
+        }
+
+        if(maxLen >=L){ //如果行走次数小于或等于最长步数，则直接输出 L+1（1是指一开始已游历的0号城市）
+            System.out.println( L+1);
+            return ;
+        }
+        //否则的话,则有以下两种情况,  根据二叉树的结构，每多走一个城市就要多花费两步
+        int rest = (L - maxLen)/2 ;//剩下可行走的次数还可以走多少个城市
+        int remainingCity = n - maxLen - 1; //还没有游历过的城市个数
+        //1.如果还可以游历的城市的个数大于或等于没有有游历过的城市个数，则小易可以把所有城市都游历完。
+        if(rest > remainingCity){
+            System.out.println(n);
+            return;
+        }else{  //2.否则，小易最多可以游历 (maxLen+rest+1)个城市
+            System.out.println(maxLen+rest+1);
+            return;
+        }
+    }
+
+        static class City{
+            int step;
+            //City pre;
+            ArrayList<City> list = new ArrayList<City>();
+        }
 }

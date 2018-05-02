@@ -1,5 +1,8 @@
 package com.practice;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  * @CreatedBy cx
  * @CreatedTime [Date]
@@ -40,4 +43,5 @@ public class Test {
             super.setValue(2 * value);
         }
     }
+
 }

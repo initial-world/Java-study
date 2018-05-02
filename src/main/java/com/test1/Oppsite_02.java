@@ -36,6 +36,13 @@ public class Oppsite_02 {
         for (int i = 0; i<a.size(); i++) {
             b+=a.get(i)*Math.pow(10,a.size()-1-i);
         }
+        System.out.println();
         System.out.println(b);
+    }
+
+    public static void main2(String[] args) {
+        Scanner sb = new Scanner(System.in);
+        String n = sb.next();
+        System.out.println(Integer.parseInt(new StringBuffer(n).reverse().toString())+Integer.parseInt(n));
     }
 }

@@ -3,7 +3,7 @@ package com.alglorithm;
 /**
  * CreatedBy cx
  * CreateTime 2018/4/17 11:07
- * Description
+ * Description 可以上一级、两级、..n级台阶，有多少种方法
  */
 public class JumpFloorPlus_09 {
     public int JumpFloorII(int target) {
