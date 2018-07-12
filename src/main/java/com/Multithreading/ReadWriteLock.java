@@ -28,10 +28,18 @@ public class ReadWriteLock{
     }
 
     private boolean canGrantReadAccess(Thread callingThread){
-        if(isWriter(callingThread)) return true;
-        if(hasWriter()) return false;
-        if(isReader(callingThread)) return true;
-        if(hasWriteRequests()) return false;
+        if(isWriter(callingThread)) {
+            return true;
+        }
+        if(hasWriter()) {
+            return false;
+        }
+        if(isReader(callingThread)) {
+            return true;
+        }
+        if(hasWriteRequests()) {
+            return false;
+        }
         return true;
     }
 
@@ -78,17 +86,27 @@ public class ReadWriteLock{
     }
 
     private boolean canGrantWriteAccess(Thread callingThread){
-        if(isOnlyReader(callingThread)) return true;
-        if(hasReaders()) return false;
-        if(writingThread == null) return true;
-        if(!isWriter(callingThread)) return false;
+        if(isOnlyReader(callingThread)) {
+            return true;
+        }
+        if(hasReaders()) {
+            return false;
+        }
+        if(writingThread == null) {
+            return true;
+        }
+        if(!isWriter(callingThread)) {
+            return false;
+        }
         return true;
     }
 
 
     private int getReadAccessCount(Thread callingThread){
         Integer accessCount = readingThreads.get(callingThread);
-        if(accessCount == null) return 0;
+        if(accessCount == null) {
+            return 0;
+        }
         return accessCount.intValue();
     }
 

@@ -1,7 +1,6 @@
 package com.practice;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * @CreatedBy cx
@@ -11,7 +10,12 @@ import java.util.Scanner;
 
 public class Test {
     public static void main(String [] args){
-        System.out.println(new B().getValue());
+//        Map map = new HashMap();
+//        Collection collection= new LinkedList();
+//        System.out.println(Math.round(-11.6));
+//        System.out.println(new B().getValue());
+        System.out.println(Integer.toBinaryString(-5>>>2));
+        System.out.println((-5)>>>2);
     }
     static class A{
         protected int value;
@@ -39,6 +43,7 @@ public class Test {
             super(5);
             setValue(getValue() - 3);
         }
+        @Override
         public void setValue(int value){
             super.setValue(2 * value);
         }
