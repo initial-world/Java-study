@@ -49,4 +49,10 @@ public class Test {
         }
     }
 
+
+    public int maxArea(int a[][]){
+        int n=a.length;
+        int m=a[0].length;
+        return 0;
+    }
 }

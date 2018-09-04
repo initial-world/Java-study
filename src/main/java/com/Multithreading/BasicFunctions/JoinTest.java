@@ -10,9 +10,9 @@ public class JoinTest {
         MyThread myThread = new MyThread();
         myThread.start();
         /**
-         * 在主线程中调用thread.join(); 就是将主线程加入到thread子线程后面等待执行。不过有时间限制，为1毫秒。
+         * 在主线程中调用thread.join(); 就是将主线程加入到thread子线程后面等待执行。
          */
-        myThread.join(1);
+        myThread.join();
         for (int i = 0; i < 30; i++) {
             System.out.println(Thread.currentThread().getName()+"线程第"+i+"次执行");
         }
